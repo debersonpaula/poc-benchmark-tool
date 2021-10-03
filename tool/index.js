@@ -49,6 +49,28 @@ function benchmarktool(callback, options) {
   );
 }
 
+function validateCallback(callback, value) {
+  const result = callback();
+  if (result === value) {
+    console.log(`
+    -----------------------------------------------------
+    callback validated OK
+      - exptected = ${value}
+      - received = ${result}
+    -----------------------------------------------------
+    `);
+  } else {
+    console.log(`
+    -----------------------------------------------------
+    ERROR:
+    callback validated NOK
+      - exptected = ${value}
+      - received = ${result}
+    -----------------------------------------------------
+    `);
+  }
+}
+
 function getTime() {
   return new Date().getTime();
 }
@@ -82,4 +104,4 @@ function getReport(stepTimes) {
   return results;
 }
 
-module.exports = benchmarktool;
+module.exports = { benchmarktool, validateCallback };
