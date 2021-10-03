@@ -6,7 +6,8 @@ const { search, jsSearch, binarySearch } = require("./search");
 const limit = 1000;
 const list = Array(limit)
   .fill("")
-  .map(() => faker.name.firstName() + " " + faker.name.lastName());
+  .map(() => faker.name.firstName() + " " + faker.name.lastName())
+  .sort();
 const randomIndex = Math.round(limit * 0.8); //faker.datatype.number(limit);
 const searchFor = list[randomIndex];
 
@@ -26,18 +27,18 @@ validateCallback(jsSearchCallback, randomIndex);
 validateCallback(binarySearchCallback, randomIndex);
 
 // BENCHMARK
-// benchmarktool(searchCallback, {
-//   name: search.name,
-//   steps,
-//   loops,
-// });
-// benchmarktool(jsSearchCallback, {
-//   name: jsSearch.name,
-//   steps,
-//   loops,
-// });
-// benchmarktool(binarySearchCallback, {
-//   name: binarySearch.name,
-//   steps,
-//   loops,
-// });
+benchmarktool(searchCallback, {
+  name: search.name,
+  steps,
+  loops,
+});
+benchmarktool(jsSearchCallback, {
+  name: jsSearch.name,
+  steps,
+  loops,
+});
+benchmarktool(binarySearchCallback, {
+  name: binarySearch.name,
+  steps,
+  loops,
+});
