@@ -6,7 +6,16 @@ function swap(items, leftIndex, rightIndex) {
 
 /**
  *
- * @param {number[]} list
+ * @param {any[]} list
+ * @returns any[]
+ */
+function jsSort(list) {
+  return list.sort();
+}
+
+/**
+ *
+ * @param {any[]} list
  * @returns number[]
  */
 function insertionSort(list) {
@@ -109,4 +118,10 @@ function quickSort(items, left, right) {
   return items;
 }
 
-module.exports = { insertionSort, selectionSort, bubbleSort, quickSort };
+module.exports = {
+  jsSort,
+  insertionSort,
+  selectionSort,
+  bubbleSort,
+  quickSort,
+};
